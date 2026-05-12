@@ -3,121 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Constancia de CURP - Roberto Roa Ayala</title>
+    <title>CURP - ROBERTO ROA AYALA</title>
     <style>
+        :root {
+            --gold: #b38e5d;
+            --maroon: #621132;
+            --grey: #545454;
+        }
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #e0e0e0;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
             display: flex;
             justify-content: center;
-            padding: 20px;
+            padding: 40px 0;
         }
-        .curp-container {
-            background-color: #fff;
-            width: 800px;
-            padding: 40px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        /* Hoja de papel */
+        .page {
+            width: 8.5in;
+            height: 11in;
+            background: white;
+            padding: 0.5in;
+            box-sizing: border-box;
+            border: 3px double var(--gold);
+            position: relative;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
         }
+        /* Logos y Gobierno */
         .header {
-            text-align: center;
-            border-bottom: 2px solid #b38e5d;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-        }
-        .header h1 { font-size: 18px; margin: 5px 0; color: #621132; }
-        .header h2 { font-size: 16px; margin: 5px 0; font-weight: normal; }
-
-        .main-data {
             display: flex;
             justify-content: space-between;
-            margin-top: 30px;
+            align-items: flex-start;
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 10px;
         }
-        .clave-section {
-            background-color: #f2f2f2;
-            padding: 15px;
-            border-radius: 5px;
+        .gob-mexico { font-weight: bold; color: var(--maroon); font-size: 14px; }
+        .central-title { text-align: center; flex-grow: 1; }
+        .central-title h1 { font-size: 16px; margin: 0; color: #000; }
+        .central-title h2 { font-size: 14px; margin: 2px 0; font-weight: normal; }
+
+        /* Contenedor de la CURP */
+        .curp-box {
+            margin: 25px 0;
             text-align: center;
-            flex: 1;
-            margin-right: 20px;
+            border: 2px solid #000;
+            padding: 15px;
+            background-color: #f8f8f8;
         }
-        .clave-titulo { font-size: 12px; color: #666; margin-bottom: 5px; }
-        .clave-valor { font-size: 24px; font-weight: bold; letter-spacing: 2px; }
+        .curp-label { font-size: 12px; font-weight: bold; margin-bottom: 5px; }
+        .curp-value { font-size: 32px; font-weight: bold; letter-spacing: 5px; font-family: 'Courier New', Courier, monospace; }
+        
+        .folio-section { font-size: 11px; text-align: right; margin-top: -15px; margin-bottom: 10px; }
 
-        .info-personal {
-            flex: 1;
+        /* Datos Personales en Tabla */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
         }
-        .label { font-size: 12px; color: #666; margin-top: 10px; }
-        .value { font-size: 16px; font-weight: bold; text-transform: uppercase; }
+        .data-table td { padding: 8px 0; border-bottom: 1px solid #ddd; }
+        .label { font-size: 10px; color: var(--grey); text-transform: uppercase; display: block; }
+        .value { font-size: 16px; font-weight: bold; color: #000; }
 
-        .message-section {
-            margin-top: 40px;
+        .certified {
+            color: #1b5e20;
+            font-weight: bold;
             font-size: 12px;
-            line-height: 1.5;
-            color: #333;
+            text-align: right;
+            margin: 10px 0;
+        }
+
+        /* Cuerpo de la Carta */
+        .letter {
+            margin-top: 30px;
+            font-size: 11.5px;
+            line-height: 1.6;
             text-align: justify;
         }
-        .signature {
-            margin-top: 30px;
+        .signature-block {
+            margin-top: 40px;
             text-align: center;
         }
-        .signature-name { font-weight: bold; margin-bottom: 5px; }
-        
-        .footer-info {
-            margin-top: 30px;
-            font-size: 10px;
-            border-top: 1px solid #eee;
+        .signature-name { font-weight: bold; border-top: 1px solid #000; display: inline-block; padding-top: 5px; margin-top: 20px; }
+
+        /* Pie de página legal */
+        .footer {
+            position: absolute;
+            bottom: 40px;
+            left: 0.5in;
+            right: 0.5in;
+            font-size: 9px;
+            color: #444;
+            border-top: 1px solid #ccc;
             padding-top: 10px;
-            color: #777;
         }
-        .certified-badge {
-            color: #28a745;
-            font-weight: bold;
-            margin-top: 10px;
-        }
+        .footer strong { color: #000; }
     </style>
 </head>
 <body>
 
-<div class="curp-container">
+<div class="page">
     <div class="header">
-        <h1>ESTADOS UNIDOS MEXICANOS [cite: 1]</h1>
-        <h2>CONSTANCIA DE LA CLAVE ÚNICA DE REGISTRO DE POBLACIÓN [cite: 2]</h2>
-    </div>
-
-    <div class="main-data">
-        <div class="clave-section">
-            <div class="clave-titulo">Clave: [cite: 3]</div>
-            <div class="clave-valor">ROAR080625HMCXYBA1 [cite: 5]</div>
-            <div class="certified-badge">CURP Certificada: verificada con el Registro Civil </div>
+        <div class="gob-mexico">GOBIERNO DE MÉXICO [cite: 14]</div>
+        <div class="central-title">
+            <h1>ESTADOS UNIDOS MEXICANOS [cite: 1]</h1>
+            <h2>CONSTANCIA DE LA CLAVE ÚNICA DE REGISTRO DE POBLACIÓN [cite: 2]</h2>
         </div>
-
-        <div class="info-personal">
-            <div class="label">Nombre [cite: 7]</div>
-            <div class="value">ROBERTO ROA AYALA [cite: 9, 12]</div>
-            
-            <div class="label">Entidad de registro [cite: 13]</div>
-            <div class="value">MEXICO [cite: 13]</div>
-
-            <div class="label">Fecha de emisión</div>
-            <div class="value">Ciudad de México, a 12 de mayo de 2026 [cite: 19]</div>
+        <div style="text-align: right; font-size: 10px;">
+            GOBERNACIÓN [cite: 16]<br>
+            RENAPO [cite: 17]
         </div>
     </div>
 
-    <div class="message-section">
-        <p>El derecho a la identidad está consagrado en nuestra Constitución. En la Secretaría de Gobernación trabajamos todos los días para garantizar que las y los mexicanos gocen de este derecho plenamente. [cite: 20, 21]</p>
-        <p>Nuestro objetivo es que el uso y adopción de la Clave Única de Registro de Población (CURP) permita a la población tener una sola llave de acceso a servicios gubernamentales. [cite: 23]</p>
-        
-        <div class="signature">
-            <div class="signature-name">ROSA ICELA RODRÍGUEZ VELÁZQUEZ [cite: 27]</div>
-            <div>SECRETARIA DE GOBERNACIÓN [cite: 28]</div>
+    <div class="certified">
+        CURP Certificada: verificada con el Registro Civil [cite: 18]
+    </div>
+
+    <div class="folio-section">
+        Folio: 115042200800419 [cite: 8]
+    </div>
+
+    <div class="curp-box">
+        <div class="curp-label">CLAVE [cite: 3]</div>
+        <div class="curp-value">ROAR080625HMCXYBA1 [cite: 5]</div>
+    </div>
+
+    <table class="data-table">
+        <tr>
+            <td width="60%">
+                <span class="label">Nombre [cite: 7]</span>
+                <span class="value">ROBERTO ROA AYALA [cite: 9]</span>
+            </td>
+            <td>
+                <span class="label">Entidad de registro [cite: 13]</span>
+                <span class="value">MEXICO [cite: 13]</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span class="label">Fecha de emisión</span>
+                <span class="value">Ciudad de México, a 12 de mayo de 2026 [cite: 19]</span>
+            </td>
+        </tr>
+    </table>
+
+    <div class="letter">
+        <p><strong>ROBERTO ROA AYALA PRESENTE [cite: 12, 10]</strong></p>
+        <p>El derecho a la identidad está consagrado en nuestra Constitución. En la Secretaría de Gobernación trabajamos todos los días para garantizar que las y los mexicanos gocen de este derecho plenamente; y de esta forma puedan acceder de manera más sencilla a trámites y servicios. [cite: 20, 21, 22]</p>
+        <p>Nuestro objetivo es que el uso y adopción de la Clave Única de Registro de Población (CURP) permita a la población tener una sola llave de acceso a servicios gubernamentales, ser atendida rápidamente y poder realizar trámites desde cualquier computadora con acceso a internet dentro o fuera del pais. [cite: 23]</p>
+        <p>Nuestro compromiso es que la identidad de cada persona esté protegida y segura, por ello contamos con los máximos estándares para la protección de los datos personales. [cite: 24]</p>
+    </div>
+
+    <div class="signature-block">
+        <p>Agradezco tu participación. [cite: 26]</p>
+        <div class="signature-name">
+            ROSA ICELA RODRÍGUEZ VELÁZQUEZ [cite: 27]<br>
+            <small>SECRETARIA DE GOBERNACIÓN [cite: 28]</small>
         </div>
     </div>
 
-    <div class="footer-info">
+    <div class="footer">
+        <p><strong>TRÁMITE GRATUITO [cite: 31]</strong> | TELCURP: 800 911 11 11 [cite: 29]</p>
         <p>La Impresión de la constancia CURP en papel bond, a color o blanco y negro, es válida y debe ser aceptada para realizar todo trámite. [cite: 30]</p>
-        <p><strong>TRÁMITE GRATUITO [cite: 31]</strong></p>
-        <p>Para cualquier aclaración o duda marque al 800 911 11 11 [cite: 29]</p>
+        <p>Los datos personales recabados son utilizados para la asignación y gestión de la CURP, en cumplimiento a las funciones de RENAPO. [cite: 32]</p>
     </div>
 </div>
 
